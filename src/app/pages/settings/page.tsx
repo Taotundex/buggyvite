@@ -6,7 +6,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='h-screen grid md:grid-cols-6 grid-cols-5 overflow-hidden'>
+    <div className='h-screen grid lg:grid-cols-6 grid-cols-5 overflow-hidden'>
         <Sidebar />
         <div className="main-body col-span-5 h-screen md:pb-0 pb-[50px] overflow-y-scroll">
             <DashboardHeading />

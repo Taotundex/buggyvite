@@ -58,6 +58,15 @@ body {
 textarea.resize-none {
   resize: none !important;
 }
+.overflow-y-scroll::-webkit-scrollbar, .overflow-scroll::-webkit-scrollbar {
+  display: none !important;
+  /* opacity: 0.0000001 !important; */
+}
+@media screen and (max-width: 1023px) {
+  .container {
+    width: 85% !important;
+  }
+}
 @media screen and (max-width: 767px) {
   .container {
     width: 90% !important;

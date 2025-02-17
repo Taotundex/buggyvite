@@ -5,7 +5,7 @@ import React from 'react'
 const DashboardHeading = () => {
   return (
     <div className="head flex flex-col gap-5 md:px-10 md:pt-10 p-5">
-      <div className="md:hidden flex justify-between items-center">
+      <div className="lg:hidden flex justify-between items-center">
         <Link href="dashboard"><Image className='block' src="/images/BV 6 Logo 4.png" width={200} height={50} alt='logo' /></Link>
         <div className='dropdown dropdown-end'>
           {/* <svg tabIndex={0} role="button" width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@ const DashboardHeading = () => {
                 <path d="M24.2503 24.2498L18.8215 18.821M18.8215 18.821C19.7501 17.8924 20.4867 16.79 20.9893 15.5767C21.4918 14.3634 21.7505 13.063 21.7505 11.7498C21.7505 10.4365 21.4919 9.13612 20.9893 7.92284C20.4867 6.70955 19.7501 5.60713 18.8215 4.67852C17.8929 3.74991 16.7905 3.0133 15.5772 2.51074C14.3639 2.00818 13.0635 1.74951 11.7503 1.74951C10.437 1.74951 9.13661 2.00818 7.92332 2.51074C6.71004 3.0133 5.60762 3.74991 4.67901 4.67852C2.8036 6.55393 1.75 9.09754 1.75 11.7498C1.75 14.402 2.8036 16.9456 4.67901 18.821C6.55442 20.6964 9.09802 21.75 11.7503 21.75C14.4025 21.75 16.9461 20.6964 18.8215 18.821Z" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
         </label>
-        <div className="md:flex hidden items-center gap-5">
+        <div className="lg:flex hidden items-center gap-5">
           <Image src="/images/Notification.png" width={30} height={30} alt='Notification' />
           <Link className='w-[250px] flex items-center justify-center gap-2 h-[50px] bg-[#796FAB] rounded-[10px] text-white' href="">
               <p className="block">Hi, Damilola</p>

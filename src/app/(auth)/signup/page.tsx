@@ -5,7 +5,7 @@ import React from 'react'
 const page = () => {
     return (
         <div className='h-screen'>
-            <div className="container grid md:grid-cols-2 grid-cols-1 gap-[75px] h-full items-center">
+            <div className="container grid lg:grid-cols-2 grid-cols-1 gap-[75px] h-full items-center">
                 <div className="flex flex-col gap-[10px] w-full">
                     <Image className='mx-auto' src="/images/BV 1 Logo 1.png" width={200} height={50} alt="logo 1" />
                     <h3 className='text-[36px] text-center font-bold'>Sign up your account</h3>
@@ -38,7 +38,7 @@ const page = () => {
                     </form>
                     <center className="text-[16px] font-medium">Have an account? <Link href="login" className='text-[#796FAB] underline underline-offset-2'>Log in</Link></center>
                 </div>
-                <div className="img bg-[#796fab1c] shadow-2xl shadow-[#796fab1c] h-[90vh] backdrop-blur-[20px] rounded-[10px] md:flex hidden items-center">
+                <div className="img bg-[#796fab1c] shadow-2xl shadow-[#796fab1c] h-[90vh] backdrop-blur-[20px] rounded-[10px] lg:flex  hidden items-center">
                     <Image className='mx-auto' src="/images/Boy studying remotely with tutor.png" width={525} height={100} alt="logo 1" />
                 </div>
             </div>

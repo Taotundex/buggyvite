@@ -41,7 +41,7 @@ const Page = () => {
     }
 
   return (
-    <div className='h-screen grid md:grid-cols-6 grid-cols-5 overflow-hidden'>
+    <div className='h-screen grid lg:grid-cols-6 grid-cols-5 overflow-hidden'>
         <Sidebar />
         <div className="main-body col-span-5 h-screen overflow-y-scroll">
             <DashboardHeading />
@@ -64,7 +64,7 @@ const Page = () => {
                                     </div>
                                     <Link className='btn border-none bg-[#796FAB] text-white' href="payment">Pay Now</Link>
                                 </div>
-                                <div className="all-content md:p-5 p-3 py-1">
+                                <div className="all-content md:p-5 p-3 py-1 h-full">
                                     {messages.map((msg, index) => [
                                         <ChatMessage 
                                             key={index}

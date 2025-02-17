@@ -15,7 +15,7 @@ const ChatForm = ({
         }
     }
   return (
-        <form onSubmit={handleSubmit} className='sticky bottom-0 left-0 flex justify-between items-center border-t border-[#00000080] rounded-b-full bg-[#EFF6F8] md:p-5 p-3'>
+        <form onSubmit={handleSubmit} className='sticky bottom-0 left-0 flex justify-between items-center border-t border-[#00000080] rounded-b-[10px] bg-[#EFF6F8] md:p-5 p-3'>
             <label htmlFor="" className="input input-bordered p-0 bg-transparent flex items-center h-[50px] w-full border border-[#D9D9D9] rounded-[5px]">
                 <div className="relative">
                     <input onChange={(e) => setMessage(e.target.value)} className='relative z-10 opacity-[0.000000001] h-full w-[50px] bg-transparent' type="file" name="file" id="file" />

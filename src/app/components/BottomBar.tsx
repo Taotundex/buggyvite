@@ -25,7 +25,7 @@ const bottomItems = [
 const BottomBar = () => {
     const pathname = usePathname();
   return (
-    <div className='z-[100] fixed bottom-0 left-0 px-5 md:hidden flex items-center justify-between w-full bg-[#EFF6F8] shadow-2xl shadow-[#796FAB] drop-shadow-2xl h-[60px]'>
+    <div className='z-[100] fixed bottom-0 left-0 px-5 lg:hidden flex items-center justify-between w-full bg-[#EFF6F8] shadow-2xl shadow-[#796FAB] drop-shadow-2xl h-[60px]'>
         {bottomItems.map((item) => (
             <Link
                 key={item.path}

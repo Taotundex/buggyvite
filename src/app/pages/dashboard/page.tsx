@@ -8,18 +8,18 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='h-screen grid md:grid-cols-6 grid-cols-5 overflow-y-hidden'>
+    <div className='h-screen grid lg:grid-cols-6 grid-cols-5 overflow-y-hidden'>
         <Sidebar />
         <div className="main-body col-span-5 h-screen overflow-y-scroll md:pb-0 pb-[50px]">
             <DashboardHeading />
 
             <div className="body md:p-10 p-5">
                 <Link className='w-full text-[12px] flex justify-end text-[#796FAB] mb-1' href="">View all</Link>
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
-                    <div className="balance bg-white rounded-[10px] flex flex-col justify-between md:p-8 p-5 md:gap-5 gap-2">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
+                    <div className="balance bg-white lg:col-span-1 md:col-span-2 col-span-1 rounded-[10px] flex flex-col justify-between md:p-8 p-5 md:gap-5 gap-2">
                         <h4 className='text-xl font-bold'>Balance</h4>
                         <div className="details flex flex-col gap-1">
-                            <span className='text-2xl flex items-baseline'>#<h1 className='md:text-[60px] text-5xl font-semibold'>10,000,000</h1></span>
+                            <span className='text-2xl flex items-baseline'>#<h1 className='md:text-[60px] text-[45px] font-semibold'>10,000,000</h1></span>
                             <small className="text-xs text-[#2828288A]">Updated 3 days ago</small>
                             <Link className='btn border-none w-full text-white bg-[#796FAB] md:mt-5 mt-3' href="withdraw">Withdraw</Link>
                         </div>

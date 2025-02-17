@@ -33,7 +33,7 @@ const sidebarItems2 = [
 const Sidebar = () => {
     const pathname = usePathname();
   return (
-    <div className="sidebar col-span-1 bg-[#796FAB] py-[35px] md:flex hidden flex-col justify-between">
+    <div className="sidebar col-span-1 bg-[#796FAB] py-[35px] lg:flex hidden flex-col justify-between">
         <div className="flex flex-col gap-[70px]">
             <Image className='mx-auto px-3' src="/images/BV 3 Logo 2.png" width={225} height={40} alt="logo 1" />
             <div className="flex flex-col gap-5 pl-5">
