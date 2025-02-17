@@ -56,7 +56,7 @@ const page = () => {
                                 </div>
                                 <form action="" method="post" className='w-full flex flex-col gap-10'>
                                     <label htmlFor="" className='flex items-center md:gap-5 gap-3'>
-                                        <div className="md:w-[300px] w-[125px] md:text-base text-sm font-medium">I'm leaving because...</div>
+                                        <div className="md:w-[300px] w-[125px] md:text-base text-sm font-medium">I&apos;m leaving because...</div>
                                         <select name="accout_deactivation" id="accout_deactivation" className='select select-bordered bg-transparent border border-[#796FAB] w-full'>
                                             <option value="" disabled >Choose a reason</option>
                                         </select>

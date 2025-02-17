@@ -53,7 +53,12 @@ export default function OTPInput() {
           value={digit}
           onChange={(e) => handleChange(index, e.target.value)}
           onKeyDown={(e) => handleKeyDown(index, e)}
-          ref={(el) => (inputRefs.current[index] = el!)}
+          // ref={(el) => (inputRefs.current[index] = el!)}
+          ref={(el) => {
+            if (el) {
+              inputRefs.current[index] = el;
+            }
+          }}
           className="w-12 h-12 text-center text-lg font-medium bg-transparent border border-[#796FAB] rounded-md focus:ring-2 focus:ring-[#796FAB] focus:shadow-lg focus:shadow-[#796FAB80] focus:outline-none"
         />
       ))}
