@@ -34,7 +34,7 @@ const page = () => {
                                 <span className='text-[#8E8E8E] text-sm w-full'>This form is protected by feCAPTCHA and the Google <Link href="" className='text-black underline underline-offset-2'>Privacy Policy</Link> and <Link href="" className='text-black underline underline-offset-2'>Terms of Service</Link> apply</span>
                             </div>
                         </div>
-                        <button className="btn col-span-2 w-full bg-[#796FAB] border-none text-[#D9D9D9]">Sign up</button>
+                        <button className="btn col-span-2 w-full bg-[#796FAB] border-none text-[#D9D9D9]"><Link href="/pages/dashboard">Sign up</Link></button>
                     </form>
                     <center className="text-[16px] font-medium">Have an account? <Link href="login" className='text-[#796FAB] underline underline-offset-2'>Log in</Link></center>
                 </div>

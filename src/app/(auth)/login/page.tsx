@@ -19,7 +19,7 @@ const page = () => {
                             <input type="password" placeholder="********" minLength={8} name="password" className="input input-bordered w-full bg-transparent border border-[#8E8E8E] rounded-[10px]" />
                         </label>
                         <Link href="forget_password" className='text-[16px] w-full flex justify-end mt-[-15px] underline underline-offset-2'>Forgot Password?</Link>
-                        <button className="btn col-span-2 w-full bg-[#796FAB] border-none text-[#D9D9D9]">Sign in</button>
+                        <button className="btn col-span-2 w-full bg-[#796FAB] border-none text-[#D9D9D9]"><Link href="/pages/dashboard">Sign in</Link></button>
                     </form>
                     <center className="text-[16px] font-medium">Don’t have an account? <Link href="signup" className='text-[#796FAB] underline underline-offset-2'>Sign up</Link></center>
                 </div>
