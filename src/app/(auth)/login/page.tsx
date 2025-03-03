@@ -11,7 +11,7 @@ const page = () => {
                     <Image className='mx-auto' src="/images/Male User.png" width={50} height={50} alt="logo 1" />
                     <h3 className='text-[36px] text-center font-bold'>Login</h3>
                     {/* <p className='font-medium text-[18px]'>Enter your email and password access your dashboard</p> */}
-                    <form action="" method="post" className='font-medium text-[16px] pt-10 pb-5 flex flex-col gap-[20px]'>
+                    <form action="/pages/dashboard" method="post" className='font-medium text-[16px] pt-10 pb-5 flex flex-col gap-[20px]'>
                         <label className="form-control flex flex-col gap-1 w-full">Email
                             <input type="email" placeholder="e. g. johndoe@gmail.com" name="email" className="input input-bordered w-full bg-transparent border border-[#8E8E8E] rounded-[10px]" />
                         </label>
@@ -19,7 +19,7 @@ const page = () => {
                             <input type="password" placeholder="********" minLength={8} name="password" className="input input-bordered w-full bg-transparent border border-[#8E8E8E] rounded-[10px]" />
                         </label>
                         <Link href="forget_password" className='text-[16px] w-full flex justify-end mt-[-15px] underline underline-offset-2'>Forgot Password?</Link>
-                        <button className="btn col-span-2 w-full bg-[#796FAB] border-none text-[#D9D9D9]">Sign in</button>
+                        <button className="btn col-span-2 w-full bg-[#796FAB] border-none text-[#D9D9D9]"><Link href="/pages/dashboard">Sign in</Link></button>
                     </form>
                     <center className="text-[16px] font-medium">Don’t have an account? <Link href="signup" className='text-[#796FAB] underline underline-offset-2'>Sign up</Link></center>
                 </div>
