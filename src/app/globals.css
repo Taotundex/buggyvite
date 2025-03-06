@@ -15,6 +15,10 @@
     --font-primary: var(--font-plus-jakarta-sans);
   }
 }
+::-webkit-scrollbar {
+  display: none !important;
+  /* opacity: 0.0000001 !important; */
+}
 
 *{
   margin: 0;
