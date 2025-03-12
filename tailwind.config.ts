@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        purple: "var(--clr-primary)",
+        secBlack: "var(--clr-secBlack)",
       },
     },
   },

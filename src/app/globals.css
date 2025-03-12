@@ -11,7 +11,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #eff6f8;
-    --foreground: #171717;
+    --foreground: #171717; 
+    --clr-primary: #796FAB;
+    --clr-secBlack: #282828;
     --font-primary: var(--font-plus-jakarta-sans);
   }
 }
