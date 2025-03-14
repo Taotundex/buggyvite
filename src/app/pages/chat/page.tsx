@@ -6,11 +6,8 @@ import DashboardHeading from '@/app/components/DashboardHeading'
 import Sidebar from '@/app/components/Sidebar'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import ClientChatList from './chatComponents/clientChatList';
-import TheChatList from './chatComponents/ChatList';
-import TheChatDetails from './chatComponents/ChatDetails';
 import { FaArrowLeftLong, FaRegMessage } from 'react-icons/fa6';
 import { FaEllipsisV, FaUserFriends } from 'react-icons/fa';
 import BottomBar from '@/app/components/BottomBar';
@@ -23,8 +20,8 @@ interface ChatProps {
 }
 
 const Page = () => {
-    const [room, setRoom] = useState("Ade1Ade2");
-    const [userName, setUserName] = useState("Ade");
+    const [room, setRoom] = useState("");
+    const [userName, setUserName] = useState("");
     const [joined, setJoined] = useState(false);
     const [messages, setMessages] = useState<{ sender: string; message: string }[]> ([]);
 
@@ -96,12 +93,14 @@ const Page = () => {
     ]
 
     const handleChatSelect = (chat: ChatProps) => {
-        console.log("chat selected")
-        setUserName(chat.name)
-        setRoom(chat.roomname)
-        console.log("room", room)
-        console.log("userName", userName)
-        handJoinRoom()
+        setSelectedChat(chat);
+        setUserName(chat.name);
+        setRoom(chat.roomname);
+        handJoinRoom();
+    };
+    
+    const handleChatClose = () => {
+        setSelectedChat(null);
     }
 
   return (
@@ -112,22 +111,16 @@ const Page = () => {
 
             {/* <div className="body md:px-10 px-5 mb-5 h-[83vh] flex md:flex-row gap-3 flex-col overflow-hidden">
                 <div className="chat-list md:w-2/6 w-full h-full border-r-4 overflow-y-auto bg-[#eff6f8] p-5 pe-2">
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
-                    <ClientChatList />
+                    {
+                        recentChats.map((recentChat) => (
+                            <ClientChatList 
+                                key={recentChat.id} 
+                                name={recentChat.name} 
+                                lastMesage={recentChat.lastMessage} 
+                                action={() => handleChatSelect(recentChat)} 
+                            />
+                        ))
+                    }
                 </div>
                 <div className="chat-body md:w-4/6 w-full h-full">
                     <div className="h-full">
@@ -191,7 +184,14 @@ const Page = () => {
                         <div className={`w-full md:w-1/3 overflow-y-auto md:pe-2 md:border-r-4 border-black/10 ${selectedChat ? "hidden md:block" : "block"}`}>
                             {
                                 recentChats.map((recentChat) => (
-                                    <ClientChatList key={recentChat.id} name={recentChat.name} lastMesage={recentChat.lastMessage} action={() => handleChatSelect(recentChat)} />
+                                    <ClientChatList 
+                                        key={recentChat.id} 
+                                        id={recentChat.id} 
+                                        activeChatId={selectedChat?.id} 
+                                        name={recentChat.name} 
+                                        lastMesage={recentChat.lastMessage}
+                                        action={() => handleChatSelect(recentChat)} 
+                                    />
                                 ))
                             }
                         </div>
@@ -206,23 +206,26 @@ const Page = () => {
                                                 <div className="profile flex gap-2 items-center">
                                                     <button
                                                         className="md:hidden p-3 -me-4 bg-transparent"
-                                                        onClick={() => setSelectedChat(null)}
+                                                        onClick={() => handleChatClose()}
                                                     >
                                                         <FaArrowLeftLong className='size-6' />
                                                     </button>
-                                                    <div className="img relative w-fit">
-                                                        <Image className="relative rounded-full" src="/images/Ellipse 169.png" width={50} height={50} alt="profile image" />
-                                                        <div className="absolute bottom-[2px] right-[2px] md:w-[12px] w-[10px] md:h-[12px] h-[10px] rounded-full bg-[#12FB21] border-2 border-white"></div>
-                                                    </div>
-                                                    <div className="dets flex flex-col md:gap-2 gap-1 text-black">
-                                                        <h4 className='font-bold md:text-lg text-sm md:leading-4 leading-3'>Message {room}</h4>
-                                                        <small className='md:text-sm text-xs leading-[10px]'>Online . Avg response time 1 hour</small>
-                                                    </div>
+                                                    <Link href={`profile?email=`} className="profile flex gap-2 items-center">
+                                                        <div className="img relative w-fit">
+                                                            <Image className="relative rounded-full" src="/images/Ellipse 169.png" width={50} height={50} alt="profile image" />
+                                                            <div className="absolute bottom-[2px] right-[2px] md:w-[12px] w-[10px] md:h-[12px] h-[10px] rounded-full bg-[#12FB21] border-2 border-white"></div>
+                                                        </div>
+                                                        <div className="dets flex flex-col md:gap-2 gap-1 text-black">
+                                                            <h4 className='font-bold md:text-lg text-sm md:leading-4 leading-3'>Message {room}</h4>
+                                                            <small className='md:text-sm text-xs leading-[10px]'>Online . Avg response time 1 hour</small>
+                                                        </div>
+                                                    </Link>
                                                 </div>
                                                 <details className='bg-purple text-background rounded-lg drop-shadow-xl p-2 relative md:hidden inline-flex'>
                                                     <summary className='list-none'><FaEllipsisV className='size-4' /></summary>
-                                                    <div className='absolute bottom-0 translate-y-20 right-0 w-max bg-white p-3 rounded-md'>
+                                                    <div className='absolute z-[99999999] top-[45px] right-0 w-max bg-white p-3 rounded-md flex flex-col gap-2'>
                                                         <Link className='btn border-none px-6 bg-[#796FAB] text-white' href="payment">Pay Now</Link>
+                                                        <Link className='btn border-none px-6 bg-[#796FAB] text-white' href={`profile?email=`}>View Profile</Link>
                                                     </div>
                                                 </details>
                                                 <Link className='btn border-none bg-[#796FAB] text-white md:inline-flex hidden' href="payment">Pay Now</Link>

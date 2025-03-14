@@ -58,6 +58,9 @@ body {
 .bottom-active small {
   display: block;
 }
+.bottom-active div{
+  transform: scale(.8) !important;
+}
 .details::-webkit-scrollbar {
   display: none !important;
 }
@@ -77,4 +80,20 @@ textarea.resize-none {
   .container {
     width: 90% !important;
   }
+}
+
+.more-active {
+  transform: scale(115%) translateX(-20px) !important;
+  color: #EFF6F8 !important;
+}
+.more-active .menu-icon {
+  transform: scale(120%) !important;
+  @apply drop-shadow-xl p-2 bg-purple border-2 border-background
+}
+.more-active .menu-icon svg path {
+  fill: #EFF6F8 !important;
+  stroke: #EFF6F8 !important;
+}
+.more-active span {
+  display: block;
 }

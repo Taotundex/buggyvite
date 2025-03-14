@@ -3,20 +3,20 @@ import { useFormik } from 'formik';
 import { FaPlus, FaTrashAlt } from 'react-icons/fa';
 
 interface BizInfoForm {
-    headline?: String;
-    profilePic?: String;
-    yourBio?: String;
-    location?: String;
-    timeZone?: String;
+    headline?: string;
+    profilePic?: string;
+    yourBio?: string;
+    location?: string;
+    timeZone?: string;
     skills?: [];
 }
 
 const BizInfoTab = () => {
     const [inputValue, setInputValue] = useState('');
     const [isEmpty, setIsEmpty] = useState<boolean>(false);
-	const [selectedModerators, setSelectedModerators] = useState<Array>(["Favour", "Ade", "Web Development", "Ayom", "Mayokun", "UI/UX Design"]);
+	const [selectedModerators, setSelectedModerators] = useState(["Favour", "Ade", "Web Development", "Ayom", "Mayokun", "UI/UX Design"]);
     const colors = ["green-500", "stone-500", "yellow-500", "blue-500", "red-500", "orange-500", "fuchsia-500", "cyan-500", "sky-500", "violet-500", "neutral-600"]
-    const [bgColor, setBgColor] = useState<String>("indigo-500")
+    const [bgColor, setBgColor] = useState<string>("indigo-500")
 
     const formik = useFormik<BizInfoForm>({
         initialValues: {
@@ -110,7 +110,7 @@ const BizInfoTab = () => {
                         <span>Your Skills</span>
                         <div className="flex flex-col items-end justify-end md:w-[500px] w-full">
                             <div className="mb-3 md:w-[500px] flex flex-wrap justify-end gap-3">
-                                {selectedModerators.map((moderator: String, index: any) => (
+                                {selectedModerators.map((moderator: string, index: any) => (
                                     <small
                                         key={index}
                                         className={`flex gap-2 items-center text-xs py-2 px-3 rounded-lg bg-${bgColor} border-2 border-background shadow-md shadow-purple text-background overflow-hidden max-w-[150px]`}

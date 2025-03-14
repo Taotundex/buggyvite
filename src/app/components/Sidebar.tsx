@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from "next/navigation";
-import FaRegMessage from "react-icons/fa6"
 
 const sidebarItems1 = [
     { name: "Marketplace", path: "/pages/marketplace", svg: <svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">

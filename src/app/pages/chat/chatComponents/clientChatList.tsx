@@ -2,18 +2,19 @@ import Image from "next/image"
 import React from "react"
 
 interface ClientChatListProps {
+    id: number;
     name: string;
     lastMesage: string;
-    chatOpen?: boolean;
-	action?: () => void;
+    activeChatId: number | undefined;
+	action: () => void;
 }
 
-const ClientChatList: React.FC<ClientChatListProps> = ({ name, lastMesage, chatOpen, action }) => {
+const ClientChatList: React.FC<ClientChatListProps> = ({ id, activeChatId, name, lastMesage, action }) => {
 
     return(
 
         <div 
-            className={`border-b border-black/50 p-3 flex gap-3 items-center justify-between cursor-pointer hover:bg-[#786FAB]/30 transition-all hover:rounded-xl ${chatOpen ? "bg-[#786FAB]/20" : null}`} 
+            className={`border-b-2 border-black/10 p-3 flex gap-3 items-center justify-between cursor-pointer hover:bg-[#786FAB]/30 transition-all ${id == activeChatId ? "bg-[#786FAB]/20" : "bg-transparent"}`} 
             onClick={action}
         >
             <div className="img relative w-fit">
