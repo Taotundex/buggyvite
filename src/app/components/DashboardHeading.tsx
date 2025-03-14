@@ -28,7 +28,7 @@ const DashboardHeading = () => {
             </svg>
         </label>
         <div className="lg:flex hidden items-center gap-5">
-          <Image src="/images/Notification.png" width={30} height={30} alt='Notification' />
+          <Link href={"/pages/settings?showNotif=true"}><Image src="/images/Notification.png" width={30} height={30} alt='Notification' /></Link>
           <Link className='w-[250px] flex items-center justify-center gap-2 h-[50px] bg-[#796FAB] rounded-[10px] text-white' href="/pages/profile">
               <p className="block">Hi, Damilola</p>
               <Image className='block' src="/images/Ellipse 177.png" width={40} height={40} alt='profile image' />

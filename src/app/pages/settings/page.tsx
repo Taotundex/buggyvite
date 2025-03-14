@@ -2,12 +2,12 @@
 import BottomBar from '@/app/components/BottomBar'
 import DashboardHeading from '@/app/components/DashboardHeading'
 import Sidebar from '@/app/components/Sidebar'
-import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AccountTab from '@/app/components/settingsComponents/accountTab'
 import SecurityTab from '@/app/components/settingsComponents/securityTab'
 import NotificationTab from '@/app/components/settingsComponents/notificationTab'
 import BizInfoTab from '@/app/components/settingsComponents/bizInfoTab'
+import { useParams } from 'react-router-dom'
 
 const page = () => {
     const [activeTab, setActiveTab] = useState<"account" | "security" | "notification" | "bizInfo">("bizInfo")

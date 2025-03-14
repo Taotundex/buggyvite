@@ -27,7 +27,7 @@ const Page = () => {
 
     const [selectedChat, setSelectedChat] = useState<ChatProps | null>(null)
 
-    useEffect(()=> {
+    useEffect(() => {
         socket.on("message", (data)=> {
             setMessages((prev) => [...prev, data]);
         });
