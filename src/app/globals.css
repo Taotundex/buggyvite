@@ -60,6 +60,7 @@ body {
 }
 .bottom-active div{
   transform: scale(.8) !important;
+  opacity: 100%;
 }
 .details::-webkit-scrollbar {
   display: none !important;

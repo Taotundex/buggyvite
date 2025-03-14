@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaEllipsisV } from 'react-icons/fa';
 
 const bottomItems = [ 
@@ -34,6 +34,12 @@ const moreItems = [
 const BottomBar = () => {
     const pathname = usePathname();
     const [openDetail, setOpenDetail] = useState<boolean>(false)
+    console.log("before", openDetail)
+    const handleOpeningDetail = () => {
+        setOpenDetail(prevState => !prevState);
+        console.log("after", openDetail)
+    }
+    console.log("later", openDetail)
 
     return (
         <div className='z-[100] fixed bottom-0 left-0 px-5 lg:hidden flex items-center justify-between w-full bg-[#EFF6F8] shadow-2xl shadow-[#796FAB] drop-shadow-2xl h-[60px]'>
@@ -56,9 +62,9 @@ const BottomBar = () => {
                 </Link>
             ))}
             <details 
-                open={openDetail ? true : false}
+                {...(openDetail ? { open: true } : {})}
                 className={`flex ${openDetail ? "bottom-active" : null} flex-col items-center text-[10px] font-medium gap-1 w-[60px] h-[60px] justify-center rounded-full`}
-                onClick={() => setOpenDetail(!openDetail)}
+                onClick={() => handleOpeningDetail()}
             >
                 <summary className='list-none flex flex-col gap-1 items-center justify-center mt-1'>
                     <FaEllipsisV className='text-purple size-5' />
