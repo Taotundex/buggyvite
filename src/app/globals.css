@@ -98,3 +98,37 @@ textarea.resize-none {
 .more-active span {
   display: block;
 }
+
+.bg-green{
+  background: green;
+}
+.bg-slategray{
+  background: slategray;
+}
+.bg-yellow{
+  background: goldenrod;
+}
+.bg-blue{
+  background: blue;
+}
+.bg-red{
+  background: red;
+}
+.bg-orange{
+  background: orange;
+}
+.bg-fuchsia{
+  background: fuchsia;
+}
+.bg-black{
+  background: black;
+}
+.bg-skyblue{
+  background: skyblue;
+}
+.bg-violet{
+  background: violet;
+}
+.bg-maroon{
+  background-color: maroon;
+}

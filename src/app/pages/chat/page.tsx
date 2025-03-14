@@ -6,7 +6,7 @@ import DashboardHeading from '@/app/components/DashboardHeading'
 import Sidebar from '@/app/components/Sidebar'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import ClientChatList from './chatComponents/clientChatList';
 import { FaArrowLeftLong, FaRegMessage } from 'react-icons/fa6';
 import { FaEllipsisV, FaUserFriends } from 'react-icons/fa';
@@ -25,6 +25,7 @@ const Page = () => {
     const [joined, setJoined] = useState(false);
     const [messages, setMessages] = useState<{ sender: string; message: string }[]> ([]);
 
+    console.log(messages)
     const [selectedChat, setSelectedChat] = useState<ChatProps | null>(null)
 
     useEffect(() => {
@@ -96,9 +97,15 @@ const Page = () => {
         setSelectedChat(chat);
         setUserName(chat.name);
         setRoom(chat.roomname);
-        handJoinRoom();
     };
     
+    useEffect(() => {
+        if (selectedChat) {
+            handJoinRoom();
+        }
+    }, [selectedChat]);
+    
+
     const handleChatClose = () => {
         setSelectedChat(null);
     }

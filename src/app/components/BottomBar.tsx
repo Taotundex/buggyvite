@@ -34,12 +34,10 @@ const moreItems = [
 const BottomBar = () => {
     const pathname = usePathname();
     const [openDetail, setOpenDetail] = useState<boolean>(false)
-    console.log("before", openDetail)
-    const handleOpeningDetail = () => {
-        setOpenDetail(prevState => !prevState);
-        console.log("after", openDetail)
-    }
-    console.log("later", openDetail)
+
+    const handleOpeningDetail = (event: React.SyntheticEvent<HTMLDetailsElement>) => {
+        setOpenDetail(event.currentTarget.open); // Sync with <details> state
+    };
 
     return (
         <div className='z-[100] fixed bottom-0 left-0 px-5 lg:hidden flex items-center justify-between w-full bg-[#EFF6F8] shadow-2xl shadow-[#796FAB] drop-shadow-2xl h-[60px]'>
@@ -61,7 +59,7 @@ const BottomBar = () => {
                     }`}>{item.name}</small>
                 </Link>
             ))}
-            <details 
+            {/* <details 
                 {...(openDetail ? { open: true } : {})}
                 className={`flex ${openDetail ? "bottom-active" : null} flex-col items-center text-[10px] font-medium gap-1 w-[60px] h-[60px] justify-center rounded-full`}
                 onClick={() => handleOpeningDetail()}
@@ -89,6 +87,38 @@ const BottomBar = () => {
                                         ? "block"
                                         : "hidden"
                                     }`}>{item.name}</span>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </details> */}
+            <details 
+                open={openDetail}
+                onToggle={handleOpeningDetail} // ✅ Use onToggle instead of onClick
+                className={`flex ${openDetail ? "bottom-active" : ""} flex-col items-center text-[10px] font-medium gap-1 w-[60px] h-[60px] justify-center rounded-full`}
+            >
+                <summary className='list-none flex flex-col gap-1 items-center justify-center mt-1'>
+                    <FaEllipsisV className='text-purple size-5' />
+                    <small className={openDetail ? "block text-white" : "hidden text-purple"}>
+                        More
+                    </small>
+                </summary>
+                <div className='absolute z-50 bottom-6 -right-8 bg-purple border-2 border-white text-white drop-shadow-2xl w-[120px] h-[250px] rounded-s-full transition-all duration-500'>
+                    <ul className='relative w-full h-full flex flex-col justify-between'>
+                        {moreItems.map((item, index) => (
+                            <li key={index} className={`${index == 0 ? "absolute top-6 left-10" : index == 1 ? "absolute top-1/2 -translate-y-1/2 left-4" : "absolute bottom-6 left-10"}`}>
+                                <Link
+                                    key={item.path}
+                                    href={item.path}
+                                    className={`flex items-center text-[10px] text-white font-medium gap-1 w-[60px] h-[60px] justify-center rounded-full ${
+                                        pathname === item.path ? "more-active gap-2" : ""
+                                    }`}
+                                >
+                                    <span className='menu-icon rounded-full'>{item.svg}</span>
+                                    <span className={`hidden ${pathname === item.path ? "block" : "hidden"}`}>
+                                        {item.name}
+                                    </span>
                                 </Link>
                             </li>
                         ))}

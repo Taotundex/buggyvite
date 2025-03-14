@@ -7,10 +7,19 @@ import AccountTab from '@/app/components/settingsComponents/accountTab'
 import SecurityTab from '@/app/components/settingsComponents/securityTab'
 import NotificationTab from '@/app/components/settingsComponents/notificationTab'
 import BizInfoTab from '@/app/components/settingsComponents/bizInfoTab'
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'next/navigation'
 
 const page = () => {
+
+    const searchParams = useSearchParams();
+    const showNotificationTab = searchParams.get("showNotif");
     const [activeTab, setActiveTab] = useState<"account" | "security" | "notification" | "bizInfo">("bizInfo")
+
+    useEffect(() => {
+        if (showNotificationTab) {
+            setActiveTab("notification")
+        }
+    }, [])
 
     const renderTab = () => {
         if (activeTab === "security") {

@@ -11,12 +11,39 @@ interface BizInfoForm {
     skills?: [];
 }
 
+interface skillSetProps {
+    name: string;
+    color: string;
+}
+
 const BizInfoTab = () => {
     const [inputValue, setInputValue] = useState('');
     const [isEmpty, setIsEmpty] = useState<boolean>(false);
-	const [selectedModerators, setSelectedModerators] = useState(["Favour", "Ade", "Web Development", "Ayom", "Mayokun", "UI/UX Design"]);
-    const colors = ["green-500", "stone-500", "yellow-500", "blue-500", "red-500", "orange-500", "fuchsia-500", "cyan-500", "sky-500", "violet-500", "neutral-600"]
-    const [bgColor, setBgColor] = useState<string>("indigo-500")
+	const [selectedModerators, setSelectedModerators] = useState([
+        {
+            name: "Web Dev",
+            color: "green"
+        },
+        {
+            name: "Fishing",
+            color: "orange"
+        },
+    ]);
+    const colors = ["green", "slategray", "goldenrod", "blue", "red", "orange", "fuchsia", "black", "skyblue", "violet", "maroon"]
+    const [skills, setSkills] = useState(["Ex Skill 1", "Ex Skill 2", "Ex Skill 3"])
+
+    useEffect(() => {
+        const fetchSkills = () => {
+            const newSkills = skills.map(skill => ({
+                name: skill,
+                color: colors[Math.floor(Math.random() * colors.length)]
+            }));
+            setSelectedModerators(prev => [...prev, ...newSkills]);
+        };
+    
+        fetchSkills();
+    }, [skills]);
+    
 
     const formik = useFormik<BizInfoForm>({
         initialValues: {
@@ -51,41 +78,57 @@ const BizInfoTab = () => {
 	// 	setInputValue('');
 	// };
 
-	const handleSkillRemoval = (moderator: String) => {
-		const updatedModerators = selectedModerators.filter((m: String) => m !== moderator);
-		setSelectedModerators(updatedModerators);
-	};
+	// const handleSkillRemoval = (moderator: String) => {
+	// 	const updatedModerators = selectedModerators.filter((m: String) => m !== moderator);
+	// 	setSelectedModerators(updatedModerators);
+	// };
 
-    const handleSkillAddition = (inputValue: String) => {
-        if (inputValue.length <= 0) {
-            setIsEmpty(true)
-            setTimeout(() => {
-                setIsEmpty(false)
-            }, 2000);
+    // const handleSkillAddition = (inputValue: String) => {
+    //     if (inputValue.length <= 0) {
+    //         setIsEmpty(true)
+    //         setTimeout(() => {
+    //             setIsEmpty(false)
+    //         }, 2000);
+    //         return;
+    //     }
+
+    //     const newSkill = [...selectedModerators, inputValue]
+    //     setSelectedModerators(newSkill)
+    //     // console.log(selectedModerators)
+    //     // if (event.key === "Enter") {
+    //         //     event.preventDefault();
+    //         // }
+    // };
+
+    const handleSkillAddition = (inputValue: string) => {
+        if (inputValue.trim().length === 0) {
+            setIsEmpty(true);
+            setTimeout(() => setIsEmpty(false), 2000);
             return;
         }
+    
+        // Get a random color from the colors array
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+        // Add the new skill with its color
+        const newSkill = [...selectedModerators, { name: inputValue, color: randomColor }];
+        setSelectedModerators(newSkill);
+        setInputValue(""); // Clear input after adding
+    };
 
-        const newSkill = [...selectedModerators, inputValue]
-        setSelectedModerators(newSkill)
-        // console.log(selectedModerators)
-        // if (event.key === "Enter") {
-            //     event.preventDefault();
-            // }
+    const handleSkillRemoval = (skillToRemove: string) => {
+        const updatedModerators = selectedModerators.filter((skill) => skill.name !== skillToRemove);
+        setSelectedModerators(updatedModerators);
     };
 
     useEffect(() => {
-        console.log(inputValue)
-        const randomClr = Math.floor(Math.random()*colors.length);
-        // console.log("randomClr", randomClr)
-        setBgColor(`${colors[randomClr]}`);
-        // console.log("bgColor", bgColor)
-    }, [selectedModerators])
-
+        console.log("Updated selectedModerators:", selectedModerators);
+    }, [selectedModerators]);
 
     return(
         <div className="md:px-10 md:py-8 p-5 border border-[#282828] rounded-[10px]">
             <div className="flex flex-col md:gap-10 gap-3">
-                <form action="" method="post" className='flex flex-col md:gap-5 gap-6 md:pb-10 pb-5 border-b border-[#282828]'>
+                <form className='flex flex-col md:gap-5 gap-6 md:pb-10 pb-5 border-b border-[#282828]' onSubmit={formik.handleSubmit}>
                     <label htmlFor="headline" className='flex md:flex-row flex-col justify-between gap-3 md:items-center items-start font-medium text-[#282828] md:text-lg text-base'>
                         <span className='leading-[16px]'>Headline <small className='md:text-sm block text-xs font-normal'>Leave an impression</small></span>
                         <input type="type" name="headline" id="headline" placeholder='e. g. Tech Enthusiast' className='input input-bordered md:w-[500px] w-full bg-transparent border border-[#796FAB]' />
@@ -110,24 +153,25 @@ const BizInfoTab = () => {
                         <span>Your Skills</span>
                         <div className="flex flex-col items-end justify-end md:w-[500px] w-full">
                             <div className="mb-3 md:w-[500px] flex flex-wrap justify-end gap-3">
-                                {selectedModerators.map((moderator: string, index: any) => (
+                                {selectedModerators.map((skill, index) => (
                                     <small
                                         key={index}
-                                        className={`flex gap-2 items-center text-xs py-2 px-3 rounded-lg bg-${bgColor} border-2 border-background shadow-md shadow-purple text-background overflow-hidden max-w-[150px]`}
+                                        className={`flex gap-2 items-center text-xs py-2 px-3 rounded-lg bg-${skill.color} border-2 border-background shadow-md shadow-purple text-background overflow-hidden max-w-[150px]`}
                                     >
-                                        <span className='w-4/5 whitespace-nowrap overflow-clip'>
-                                            {moderator}
+                                        <span className="w-4/5 whitespace-nowrap overflow-clip">
+                                            {skill.name}
                                         </span>
                                         <button
-                                            title='Delete Skill'
+                                            title="Delete Skill"
                                             className="text-white"
-                                            type='button'
-                                            onClick={() => handleSkillRemoval(moderator)}
+                                            type="button"
+                                            onClick={() => handleSkillRemoval(skill.name)}
                                         >
                                             <FaTrashAlt />
                                         </button>
                                     </small>
                                 ))}
+
                             </div>
                             <div className={`input pe-0 input-bordered md:w-[500px] w-full bg-transparent border border-[#796FAB] flex items-center justify-between ${isEmpty ? "input-error" : null}`}>
                                 <input
