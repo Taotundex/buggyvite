@@ -12,6 +12,8 @@ import { FaArrowLeftLong, FaRegMessage } from 'react-icons/fa6';
 import { FaEllipsisV, FaUserFriends } from 'react-icons/fa';
 import BottomBar from '@/app/components/BottomBar';
 
+const api_url = process.env.BUGGY_VITE_API_URL
+
 interface ChatProps {
     id: number;
     name: string;
